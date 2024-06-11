@@ -46,7 +46,7 @@ Whether you are looking to track business metrics, monitor sales data, or displa
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/react-dashboard.git
+    git clone (https://github.com/keval309/react-dashboard.git)
     ```
 2. Navigate to the project directory:
     ```bash
