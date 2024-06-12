@@ -1,69 +1,162 @@
-.dashboard{
-        overflow-y: auto;
-        .bar{
-            @include flex(row , unset);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.37);
-            height: 4rem;
-            padding: 0 1rem;
-            >input{
-                margin-right: auto;
-                @include inputStyles(100% , 1rem 0);
-               
-                
-            }
-            >svg{
-                font-size: 1.2rem;
-                opacity: 0.7;
-            }
-            >img{
-                @include square(2rem);
-            }
+.dashboard {
+  overflow-y: auto;
+  .bar {
+    @include flex(row, unset);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+    height: 4rem;
+    padding: 0 1rem;
+    > input {
+      margin-right: auto;
+      @include inputStyles(100%, 1rem 0);
+    }
+    > svg {
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+    > img {
+      @include square(2rem);
+    }
+  }
+  .widgetContainer {
+    @include flex(row, space-between, stretch, 2rem);
+    padding: 2rem 2rem 2rem 0;
+    flex-wrap: wrap;
+    .widget {
+      min-width: 16rem;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+      padding: 2rem;
+      border-radius: 10px;
+      @include flex(row, space-between, stretch, 0);
 
+      .widgetInfo {
+        > p {
+          opacity: 0.7;
+          font-size: 0.8rem;
         }
-        .widgetContainer {
-            @include flex(row, space-between, stretch, 2rem);
-            padding: 2rem 2rem 2rem 0;
-            flex-wrap: wrap;
-            .widget {
-              min-width: 16rem;
-              background-color: white;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
-              padding: 2rem;
-              border-radius: 10px;
-              @include flex(row, space-between, stretch, 0);
-        
-              .widgetInfo {
-                > p {
-                  opacity: 0.7;
-                  font-size: 0.8rem;
-                }
-                > h4 {
-                  font-size: 1.5rem;
-                }
-                > span {
-                  @include flex(row, unset, center, 0.2rem);
-                }
-              }
-        
-              .widgetCircle {
-                position: relative;
-                @include square(5rem);
-                border-radius: 50%;
-                flex: none;
-                display: grid;
-                place-items: center;
-                background-color: aquamarine;
-                &::before {
-                  content: "";
-                  position: absolute;
-                  @include square(4rem);
-                  background-color: white;
-                  border-radius: 100%;
-                }
-                span {
-                  position: relative;
-                }
-              }
-            }
+        > h4 {
+          font-size: 1.5rem;
+        }
+        > span {
+          @include flex(row, unset, center, 0.2rem);
+        }
+      }
+
+      .widgetCircle {
+        position: relative;
+        @include square(5rem);
+        border-radius: 50%;
+        flex: none;
+        display: grid;
+        place-items: center;
+        background-color: aquamarine;
+        &::before {
+          content: "";
+          position: absolute;
+          @include square(4rem);
+          background-color: white;
+          border-radius: 100%;
+        }
+        span {
+          position: relative;
+        }
+      }
+    }
+  }
+
+  .graphContainer {
+    @include flex(row, unset, unset, 2rem);
+    padding: 0 2rem 2rem 0;
+    > div {
+      background-color: white;
+      border-radius: 10px;
+    }
+    .revenueChart {
+      width: 100%;
+      padding: 1rem 3rem;
+      > h2 {
+        @include heading();
+        margin: 1rem 0 2rem 0.25rem;
+        text-align: center;
+      }
+    }
+
+    .inventoryPercentage {
+      width: 100%;
+      max-width: 16rem;
+      @include flex(column, center, unset, 0);
+      padding-bottom: 2rem;
+      > h2 {
+        @include heading();
+        margin: 1.5rem 0 2rem 0;
+        text-align: center;
+      }
+      > div {
+        overflow-y: auto;
+        padding-left: 0.5rem;
+      }
+
+      .inventoryItem {
+        @include flex(row, unset);
+        padding: 1rem;
+        width: 100%;
+        > h5 {
+          @include heading(1px, 400, uppercase);
+        }
+        > div {
+          margin-left: auto;
+          width: 5rem;
+          background-color: rgb(216, 216, 216);
+          border-radius: 20px;
+          height: 0.5rem;
+          flex: none;
+          > div {
+            height: 100%;
+            border-radius: 20px;
           }
+        }
+
+        > span {
+          font-size: 0.8rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .doughnutTable {
+    @include flex(row, unset, unset, 1rem);
+    padding: 0 2rem 2rem 0;
+    height: 30rem;
+    > div {
+      background-color: white;
+      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.132);
+      border-radius: 10px;
+    }
+    .genderRatio {
+      padding: 1rem;
+      position: relative;
+      max-width: 22rem;
+      > h2 {
+        @include heading();
+        margin: 1.5rem 0 2rem 0;
+        text-align: center;
+      }
+      >p{
+        @include posCenter;
+        font-size: 2rem;
+        color: rgba(0, 0, 0, 0.634);
+      }
+    }
+  .transactionTable{
+    padding: 1rem;
+    
+    width: 100%;
+    >h2{
+      @include heading();
+      margin: 1.5rem 0 2rem 0;
+     
+    }
+  }
+  }
 }

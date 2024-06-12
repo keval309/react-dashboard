@@ -1,4 +1,3 @@
-import { IconType } from "react-icons";
 import { AiFillFileText } from "react-icons/ai";
 import {
     FaChartBar,
@@ -12,16 +11,11 @@ import {
     RiShoppingBag3Fill,
 } from "react-icons/ri";
 
-import { Link, useLocation, Location, Outlet } from "react-router-dom";
 import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { Li, LiProps } from "../../Dashboard/LiComponent";
 // import React, { useEffect, useState } from "react";
 
-type LiProps = {
-    url: string;
-    text: string;
-    Icon: IconType;
-    location: Location;
-}
 
 const AdminSidebar = () => {
     const location = useLocation();
@@ -79,22 +73,3 @@ const AdminSidebar = () => {
 };
 
 export default AdminSidebar;
-const Li = ({ url, text, location, Icon }: LiProps) => (
-    <li
-        style={{
-            backgroundColor: location.pathname.includes(url)
-                ? "rgba(0,115,255,0.1)"
-                : "white",
-        }}
-    >
-        <Link
-            to={url}
-            style={{
-                color: location.pathname.includes(url) ? "rgb(0,115,255)" : "black",
-            }}
-        >
-            <Icon />
-            {text}
-        </Link>
-    </li>
-);
