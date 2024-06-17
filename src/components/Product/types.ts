@@ -4,4 +4,5 @@ export type ProductProps = {
     price: number;
     category: string;
     image: string;
+    stocks:number
 }

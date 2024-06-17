@@ -1,9 +1,11 @@
-import type { UploadFile, UploadProps } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+import type { UploadProps } from 'antd';
 import { Button, Drawer, Form, Input, message, Select, Upload } from 'antd';
 import { useForm } from 'antd/es/form/Form';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../hooks/reduxhooks';
+import { addProduct, editProduct } from '../../Redux/Slice/productSlice';
 import { ProductProps } from './types';
-import { UploadOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
 type Props = {
@@ -15,8 +17,8 @@ type Props = {
 
 const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
   const [form] = useForm();
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
-  const [imageUrl, setImageUrl] = useState('');
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isEdit && editData) {
@@ -25,7 +27,6 @@ const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
         price: editData.price,
         category: editData.category,
       });
-      setImageUrl(editData.image || '');
     } else {
       form.resetFields();
 
@@ -34,6 +35,9 @@ const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
 
   const handleFinish = () => {
     console.log('Finish:', form.getFieldsValue());
+      
+     isEdit ? dispatch(editProduct(form.getFieldsValue())) : dispatch(addProduct(form.getFieldsValue()));
+      
     onClose();
   };
   const uploadProps: UploadProps = {
@@ -58,12 +62,6 @@ const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
     },
   };
 
-
-
-
-
-
-
   return (
     <>
       <Drawer
@@ -76,7 +74,7 @@ const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
         <div className="formContainer">
           <Form layout="vertical" onFinish={handleFinish} form={form}>
             <Form.Item
-              name="productName"
+              name="name"
               label="Product Name"
               rules={[{ required: true, message: 'Please enter the product name' }]}
             >
@@ -103,9 +101,16 @@ const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
               </Select>
             </Form.Item>
             <Form.Item
+              name="stocks"
+              label="Stocks"
+              rules={[{ required: true, message: 'Please enter the stocks' }]}
+            >
+              <Input type="number" placeholder="Enter stocks" />
+            </Form.Item>
+            <Form.Item
               name="image"
               label="Image"
-              rules={[{ required: true, message: 'Please upload an image' }]}
+              // rules={[{ required: true, message: 'Please upload an image' }]}
             >
               <Upload {...uploadProps}>
                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
@@ -113,9 +118,10 @@ const EditAndDelete = ({ open, onClose, editData, isEdit }: Props) => {
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit">
-                Submit
+                {isEdit ? 'Update' : 'Save'}
               </Button>
             </Form.Item>
+           
           </Form>
         </div>
       </Drawer>

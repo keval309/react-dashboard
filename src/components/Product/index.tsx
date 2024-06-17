@@ -41,6 +41,12 @@ const Product = () => {
       responsive: ['xs', 'sm', 'md'],
     },
     {
+      title: 'Stock',
+      dataIndex: 'stocks',
+      key: 'stocks',
+      responsive: ['xs', 'sm', 'md'],
+    },
+    {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
