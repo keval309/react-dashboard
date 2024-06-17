@@ -1,4 +1,5 @@
-import { Table, TableColumnsType } from "antd";
+import { Table } from "antd";
+import { ColumnsType } from "antd/es/table";
 
 type TableData = {
     id: string;
@@ -9,9 +10,10 @@ type TableData = {
 }
 type props ={
     tableData : TableData[]
+    pagination : boolean
 }
-const TransactionTable = ({tableData}:props) => {
-    const columns : TableColumnsType<TableData>= [
+const TransactionTable = ({tableData , pagination}:props) => {
+    const columns : ColumnsType<TableData>= [
         {
           title: 'transaction Id',
           dataIndex: 'id',
@@ -45,12 +47,15 @@ const TransactionTable = ({tableData}:props) => {
    
   return <>
     <Table columns={columns} dataSource={tableData} rowKey="id" className="custom-table"  
-    showSorterTooltip={{ target: 'sorter-icon' }} pagination={{
+      showSorterTooltip={{ target: 'sorter-icon' }}
+    pagination={pagination ?   {
       position: ['bottomRight'],
       total: tableData.length,
-      pageSize: 4,
+      pageSize: 5,
+    }: false }
 
-    }}/>
+    rowHoverable={false}
+  />
   </>
   ;
 };

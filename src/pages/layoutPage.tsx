@@ -1,4 +1,4 @@
-import AdminSidebar from "../../components/GlobalComponent/Sidebar/AdminSidebar";
+import AdminSidebar from "../components/GlobalComponent/AdminSidebar";
 
 const index = () => {
     return <>

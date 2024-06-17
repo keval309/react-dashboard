@@ -1,13 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import AdminSidebar from '../components/GlobalComponent/Sidebar/AdminSidebar';
+import AdminSidebar from '../components/GlobalComponent/AdminSidebar';
+import Loader from '../components/GlobalComponent/Loader';
+import ProductDetails from '../components/Product/EditAndDelete';
 
-const Dashboard = lazy(() => import('../pages/dashBoard'));
-const Products = lazy(() => import('../pages/products'));
-const Transactions = lazy(() => import('../pages/transactions'));
+const Dashboard = lazy(() => import('../pages/dashboardPage'));
+const Products = lazy(() => import('../pages/productPage'));
+const Transactions = lazy(() => import('../pages/transactionPage'));
 
-const Loader = () => <h1>Loading...</h1>;
+
 
 const SuspenseWrapper = ({ children }: { children: JSX.Element}) => (
   <Suspense fallback={<Loader />}>{children}</Suspense>
@@ -28,7 +30,16 @@ const SuspenseWrapper = ({ children }: { children: JSX.Element}) => (
       },
       {
         path: 'products',
-        element: <SuspenseWrapper><Products /></SuspenseWrapper>,
+        children: [
+          {
+            index: true,
+            element: <SuspenseWrapper><Products /></SuspenseWrapper>,
+          },
+          {
+            path: ':id',
+            element: <SuspenseWrapper><ProductDetails /></SuspenseWrapper>,
+          },
+        ],
       },
       {
         path: 'transactions',
@@ -44,7 +55,7 @@ const SuspenseWrapper = ({ children }: { children: JSX.Element}) => (
           {
             index: true,
             element: <div>Bar Chart</div>,
-          },
+          },  
           {
             path: 'barChart',
             element: <div>Bar Chart</div>,

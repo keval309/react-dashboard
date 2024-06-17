@@ -6,10 +6,13 @@ import { BarChart, DoughnutChart } from "../Charts";
 import InventoryItem from "./InventoryItem";
 import { WidgetItem } from "./WidgetComponent";
 import userPic from '/assets/images/userpic.png';
-import TransactionTable from "./TranscationTable";
+import TransactionTable from "../GlobalComponent/TranscationTable";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-
+    const transactionData = data.transaction.slice(0,5);
+    console.log(transactionData);
     return <>
         <main className="dashboard">
             <div className="bar">
@@ -72,8 +75,11 @@ const Dashboard = () => {
                         </p>
                 </div>
                         <div className="transactionTable">
+                            <div className="transactionInfo">
                         <h2>Transaction</h2>
-                        <TransactionTable tableData={data.transaction} />
+                        <Button type="primary"><Link to="/admin/transactions">View All</Link></Button>
+                        </div>
+                        <TransactionTable tableData={transactionData} pagination={false}/>
                         </div>
 
             </section>

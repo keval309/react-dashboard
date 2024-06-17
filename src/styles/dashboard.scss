@@ -49,7 +49,6 @@
         flex: none;
         display: grid;
         place-items: center;
-        background-color: aquamarine;
         &::before {
           content: "";
           position: absolute;
@@ -74,7 +73,7 @@
     .revenueChart {
       width: 100%;
       padding: 1rem 3rem;
-      > h2 {
+     >div > h2 {
         @include heading();
         margin: 1rem 0 2rem 0.25rem;
         text-align: center;
@@ -150,13 +149,19 @@
     }
   .transactionTable{
     padding: 1rem;
-    
     width: 100%;
-    >h2{
-      @include heading();
+    .transactionInfo{
+      @include flex(row,space-between);
       margin: 1.5rem 0 2rem 0;
-     
+      >h2{
+        @include heading();
+      }
     }
+    // >h2{
+    //   @include heading();
+    //  
+     
+    // }
   }
   }
 }

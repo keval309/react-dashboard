@@ -1,0 +1,9 @@
+.transactionContainer{
+    background-color: white;
+    padding: 2rem;
+    overflow-y: auto;
+    h2{
+        @include heading(3px);
+        margin-bottom:1.5rem ;
+    }
+}

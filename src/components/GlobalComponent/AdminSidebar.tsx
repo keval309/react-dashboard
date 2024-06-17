@@ -13,7 +13,7 @@ import {
 
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { Li, LiProps } from "../../Dashboard/LiComponent";
+import { Li, LiProps } from "../Dashboard/LiComponent";
 // import React, { useEffect, useState } from "react";
 
 

@@ -43,6 +43,7 @@ export const BarChart = (props: BarChartProps) => {
    
     const options:ChartOptions<'bar'> = {
         responsive: true,
+      
         scales: {
             y: {
               beginAtZero: true,
@@ -60,13 +61,14 @@ export const BarChart = (props: BarChartProps) => {
         plugins: {
             legend: {
                 position: 'top' as const,
-                display : false
+                // display : false
             },
             title: {
                 display : false,
                 text: 'Chart.js Bar Chart',
             },   
         },
+      
     };
 
     const data:ChartData<"bar" , number[] , string> = {
@@ -111,6 +113,7 @@ interface DoughnutChartProps {
     legends = true,
     offset,
   }: DoughnutChartProps) => {
+
     const doughnutData: ChartData<"doughnut", number[], string> = {
       labels,
       datasets: [
@@ -131,6 +134,7 @@ interface DoughnutChartProps {
           position: "bottom",
           labels: {
             padding: 40,
+            
           },
         },
       },
