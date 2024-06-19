@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "hapikey"
+    ],
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": false
+}
